@@ -1,0 +1,109 @@
+<html>
+<html>
+    <head>
+        <title>Calculator</title>
+    </head>
+<body>
+<script>
+
+const calculator = document.createElement('div');
+
+// Create display
+const display = document.createElement('input');
+display.type = 'text';
+display.readOnly = true;
+calculator.appendChild(display);
+
+// Create number buttons
+const btn7 = document.createElement('button');
+btn7.textContent = '7';
+const btn8 = document.createElement('button');
+btn8.textContent = '8';
+const btn9 = document.createElement('button');
+btn9.textContent = '9';
+const btnDiv = document.createElement('button');
+btnDiv.textContent = '/';
+
+const btn4 = document.createElement('button');
+btn4.textContent = '4';
+const btn5 = document.createElement('button');
+btn5.textContent = '5';
+const btn6 = document.createElement('button');
+btn6.textContent = '6';
+const btnMul = document.createElement('button');
+btnMul.textContent = '*';
+
+const btn1 = document.createElement('button');
+btn1.textContent = '1';
+const btn2 = document.createElement('button');
+btn2.textContent = '2';
+const btn3 = document.createElement('button');
+btn3.textContent = '3';
+const btnSub = document.createElement('button');
+btnSub.textContent = '-';
+
+const btn0 = document.createElement('button');
+btn0.textContent = '0';
+const btnEquals = document.createElement('button');
+btnEquals.textContent = '=';
+
+const btnC = document.createElement('button');
+btnC.textContent = 'C';
+const btnAdd = document.createElement('button');
+btnAdd.textContent = '+';
+
+const btnMod = document.createElement('button');
+btnMod.textContent = '%';
+
+
+// Add elements to calculator
+calculator.append(
+    document.createElement('br'),
+    btn7, btn8, btn9, btnDiv, document.createElement('br'),
+    btn4, btn5, btn6, btnMul, document.createElement('br'),
+    btn1, btn2, btn3, btnSub, document.createElement('br'),
+    btn0, btnEquals, btnC, btnAdd, document.createElement('br'),
+    btnMod
+);
+
+// Add calculator to body
+document.body.appendChild(calculator);
+
+// Add event listeners to all buttons
+function handleNumber(value) {
+    display.value += value;
+}
+
+btn0.addEventListener('click', () => handleNumber('0'));
+btn1.addEventListener('click', () => handleNumber('1'));
+btn2.addEventListener('click', () => handleNumber('2'));
+btn3.addEventListener('click', () => handleNumber('3'));
+btn4.addEventListener('click', () => handleNumber('4'));
+btn5.addEventListener('click', () => handleNumber('5'));
+btn6.addEventListener('click', () => handleNumber('6'));
+btn7.addEventListener('click', () => handleNumber('7'));
+btn8.addEventListener('click', () => handleNumber('8'));
+btn9.addEventListener('click', () => handleNumber('9'));
+
+
+btnAdd.addEventListener('click', () => handleNumber('+'));
+btnSub.addEventListener('click', () => handleNumber('-'));
+btnMul.addEventListener('click', () => handleNumber('*'));
+btnDiv.addEventListener('click', () => handleNumber('/'));
+btnMod.addEventListener('click', () => handleNumber('%'));
+
+btnC.addEventListener('click', () => {
+    display.value = '';
+});
+
+btnEquals.addEventListener('click', () => {
+    try {
+        display.value = eval(display.value);
+    } catch (error) {
+        display.value = 'Error';
+        setTimeout(() => display.value = '', 1000);
+    }
+});
+</script>
+</body>
+</html>
